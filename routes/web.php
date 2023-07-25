@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Covid19Controller;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -138,3 +139,13 @@ Route::get("/newgallery/ant", [MyProfileController::class, "ant"]);
 Route::get("/newgallery/bird", [MyProfileController::class, "bird"]);
 
 Route::get('/covid19', [Covid19Controller::class, "index"]);
+
+Route::get("/product", [ProductController::class, "index"])->name('product.index');
+Route::get("/product/create", [ProductController::class, "create"])->name('product.create');
+Route::post("/product", [ProductController::class, "store"])->name('product.store');
+Route::get('/product/{id}', [ProductController::class, "show"])->name('product.show');
+Route::get("/product/{id}/edit", [ProductController::class, "edit"])->name('product.edit');
+Route::patch("/product/{id}", [ProductController::class, "update"])->name('product.update');
+Route::delete("/product/{id}", [ProductController::class, "destroy"])->name('product.destroy');
+
+// Route::resource('/product', ProductController::class );
